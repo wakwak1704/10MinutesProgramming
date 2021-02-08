@@ -1,5 +1,5 @@
 window.onload = function () {
-    const cvs = $("#doraemon-canvas").get(0);
+    const cvs = document.getElementById("my-canvas");
     const ctx = cvs.getContext("2d") ;
 
     /* clear canvas */
