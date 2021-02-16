@@ -11,8 +11,8 @@ $(function () {
         /* 
          * 塗りつぶし箇所を2次元配列で表現 
          *
-         * 例：上から2つ目、左から3つ目のグリッドは、
-         * splitedHash[5]の値が偶数ならfillMap[1][2]をtrueにする（塗りつぶす）
+         * 例：上からY個目、左からX個目のグリッドは、
+         * splitedHash[(Y * X - 1]の値が偶数ならfillMap[Y - 1][X - 1]をtrueにする（塗りつぶす）
          */
         let fillMap = [
             [false, false, false, false, false],
