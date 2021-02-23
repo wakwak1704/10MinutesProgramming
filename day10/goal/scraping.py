@@ -9,5 +9,5 @@ html = requests.get(url)
 # Beautiful SoupでHTMLを解析する
 soup = BeautifulSoup(html.content, "html.parser")
 # classに"ingredient_row"を含むdiv要素を取得
-ingredients = soup.select("div[class='ingredient_row']")
+ingredients = soup.select("div[class*='ingredient_row']")
 print(ingredients)
