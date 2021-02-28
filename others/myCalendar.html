@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Google Calendar API Quickstart</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            gapi.load('client:auth2', () => {
+                gapi.client.init({
+                    apiKey: "",
+                    clientId: "",
+                    discovertyDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+                    scope: "https://www.googleapis.com/auth/calendar.readonly"
+                }).then(() => {
+                    console.log("init success");
+                    gapi.auth2.getAuthInstance().isSignedIn.listen(signIn => {
+                        if (signIn) {
+                            console.log("sign in");
+                            gapi.client.calendar.events.list({
+                                "calendarId": "primary",
+                                "timeMin": (new Date()).toISOString(),
+                                "showDelated": false,
+                                "singleEvents": true,
+                                "maxResults": 10,
+                                "orderBy": "startTime",
+                            }).then(response => {
+                                let events = response.result.items;
+                                events.array.forEach(event => {
+                                    console.log(event.start.dateTime, event.summary);
+                                });
+                            })
+                        } else {
+                            console.log("sign out");
+                        }
+                    });
+                }, () => {
+                    console.log("init fail");
+                })
+                // gapi.auth2.getAuthInstance().signOut();
+            });
+            document.getElementById("auth").onclick = () => {
+                gapi.auth2.getAuthInstance().signIn();
+            };
+            document.getElementById("sign-out").onclick = () => {
+                gapi.auth2.getAuthInstance().signOut();
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <button type="text" id="auth">auth</button>
+    <button type="text" id="sign-out">sign out</button>
+</body>
+
+</html>
