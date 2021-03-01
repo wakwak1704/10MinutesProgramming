@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<htlm>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Create toggl time entry</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            const API_TOKEN = "";
+            window.onload = () => {
+                let btn = document.getElementById("create-time-entry");
+                btn.onclick = () => {
+                    $.ajax({
+                        url: "https://api.track.toggl.com/api/v8/time_entries",
+                        type: "post",
+                        data: {
+                            "time_entry": {
+                                "description": "天才シリーズ",
+                                "tags": "temp",
+                                "duration": 1200,
+                                "start": "2021-03-01T07:58:58.000Z",
+                                "pid": 156150764,
+                                "created_with": "test-app",
+                            }
+                        },
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader("Authorization", "Basic " + btoa(API_TOKEN + ":" + 'api_token'));
+                        },
+                        dataType: 'json',
+                    }).done(data => {
+                        console.log(data);
+                    }).fail(() => {
+                        console.log("fail");
+                    });
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <button type="button" id="create-time-entry">Creat time entry</button>
+    </body>
+</htlm>
