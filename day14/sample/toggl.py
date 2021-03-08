@@ -43,5 +43,8 @@ def getWorkDescription():
 now = datetime.datetime.now()
 fileName = "dailyReport" + str(now.month) + "-" + str(now.day) + ".txt"
 with open(fileName, "w") as f:
+    f.write("■雑記")
+    f.write("■今日のランチ")
     f.write("■実績\n")
     f.write(getWorkDescription())
+    f.write("■改善")
