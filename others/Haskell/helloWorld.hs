@@ -18,12 +18,21 @@
 
 -- main = putStrLn result
 
-arry = tail [1, 2, 3, 4, 5]
-arry2 = init [2, 3, 4, 5, 6]
-arry3 = head [3, 4, 5]
-arry4 = last [4, 5, 6]
-arry5 = null [1]
-arry6 = null []
-arry7 = take 2 [1, 2, 3, 4, 5]
-main = print arry7
+-- arry = tail [1, 2, 3, 4, 5]
+-- arry2 = init [2, 3, 4, 5, 6]
+-- arry3 = head [3, 4, 5]
+-- arry4 = last [4, 5, 6]
+-- arry5 = null [1]
+-- arry6 = null []
+-- arry7 = take 2 [1, 2, 3, 4, 5]
+-- main = print arry7
+
+area r = pi * square r
+    where
+        pi = 3.14
+        square x = x * x
+
+main = do
+    let r = 5.0
+    print(area r)
 
