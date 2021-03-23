@@ -27,12 +27,14 @@
 -- arry7 = take 2 [1, 2, 3, 4, 5]
 -- main = print arry7
 
-area r = pi * square r
-    where
-        pi = 3.14
-        square x = x * x
+-- area r = pi * square r
+--     where
+--         pi = 3.14
+--         square x = x * x
 
-main = do
-    let r = 5.0
-    print(area r)
+-- main = do
+--     let r = 5.0
+--     print(area r)
+
+f :: Int -> Float
 
