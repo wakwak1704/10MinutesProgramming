@@ -36,5 +36,17 @@
 --     let r = 5.0
 --     print(area r)
 
-f :: Int -> Float
+-- f :: Int -> Float
+
+sqSum ** [Int] -> Int
+sqSum [] = 0
+sqSum (x:xs) = x^2 + sqSum xs
+
+isMultipleOfFive :: Int -> Bool
+isMultipleOfFive n
+    | n `mod` 5 == 0 = true
+    | Otherwise = False
+
+isMultipleOfFive :: [Int] -> Bool
+isMultipleOfFive = isMultipleOfFive . sqSum
 
